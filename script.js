@@ -1558,6 +1558,129 @@ document.addEventListener("DOMContentLoaded", function () {
     if (section) section.hidden = true;
   });
 
+   // ================================
+// UsefulHub - PDF File Configuration
+// ================================
+
+// All PDF files are stored in the ROOT of your GitHub repository.
+// Do NOT add "syllabus_files/" before the filenames.
+
+const syllabusFiles = {
+
+    // All Subjects
+    allSubjects: {
+        name: "All Subjects Question Bank",
+        path: "all subjects.pdf"
+    },
+
+    // DAA Syllabus
+    daaSyllabus: {
+        name: "Updated DAA Syllabus",
+        path: "Updated DAA Syllabus.pdf"
+    },
+
+    // DAA Unit 1
+    daaUnit1: {
+        name: "DAA Unit 1",
+        path: "DAA UNIT-1.pdf"
+    },
+
+    // DAA Unit 2
+    daaUnit2: {
+        name: "DAA Unit 2",
+        path: "DAA UNIT-2.pdf"
+    },
+
+    // DAA Unit 3
+    daaUnit3: {
+        name: "DAA Unit 3 Notes",
+        path: "DAA UNIT-3 notes.pdf"
+    },
+
+    // DAA Unit 4
+    daaUnit4: {
+        name: "DAA Unit 4 Notes",
+        path: "DAA unit-4 notes.pdf"
+    }
+};
+
+
+// ================================
+// Open PDF Function
+// ================================
+
+function openPDF(fileKey) {
+
+    // Check whether the file exists in our configuration
+    if (!syllabusFiles[fileKey]) {
+        alert("File configuration not found.");
+        return;
+    }
+
+    const filePath = syllabusFiles[fileKey].path;
+
+    // Get the current GitHub Pages website folder
+    // This automatically works with /UsefulHub/
+    const basePath = window.location.pathname.includes("/UsefulHub/")
+        ? "/UsefulHub/"
+        : "/";
+
+    // Create the correct PDF URL
+    const pdfURL = basePath + encodeURIComponent(filePath);
+
+    // Open PDF in a new tab
+    window.open(pdfURL, "_blank");
+}
+
+
+// ================================
+// Direct PDF Open Function
+// ================================
+
+// You can also use this function if your HTML
+// directly sends a filename.
+
+function openDocument(filename) {
+
+    if (!filename) {
+        alert("No file selected.");
+        return;
+    }
+
+    const basePath = window.location.pathname.includes("/UsefulHub/")
+        ? "/UsefulHub/"
+        : "/";
+
+    const pdfURL = basePath + encodeURIComponent(filename);
+
+    window.open(pdfURL, "_blank");
+}
+
+
+// ================================
+// Button Event Listeners
+// ================================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    // Find every element with data-pdf attribute
+    const pdfButtons = document.querySelectorAll("[data-pdf]");
+
+    pdfButtons.forEach(function (button) {
+
+        button.addEventListener("click", function (event) {
+
+            event.preventDefault();
+
+            const fileKey = button.getAttribute("data-pdf");
+
+            openPDF(fileKey);
+        });
+
+    });
+
+});
+
   console.log("UsefulHub JavaScript loaded successfully.");
 
 });
