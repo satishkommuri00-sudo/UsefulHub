@@ -2081,183 +2081,110 @@ document.addEventListener("DOMContentLoaded", function () {
      5. SYLLABUS PDF SELECTOR
   ========================================= */
 
-  // ONLY ONE syllabusFiles variable in this script
-  const syllabusFiles = {
+  
 
-    all: {
-      name: "all subjects.pdf",
-      path: "syllabus_files/all subjects.pdf"
-    },
+const syllabusFiles = {
+  all: {
+    name: "All Subjects",
+    path: "all subjects.pdf"
+  },
 
-    daa: {
-      name: "Updated DAA Syllabus.pdf",
-      path:
-        "syllabus_files/Updated DAA Syllabus.pdf"
-    },
+  daa: {
+    name: "Updated DAA Syllabus",
+    path: "Updated DAA Syllabus.pdf"
+  },
 
-    cv: {
-      name: "Computer Vision Syllabus.pdf",
-      path:
-        "syllabus_files/CV-Syllabus.pdf"
-    },
+  cv: {
+    name: "Computer Vision Syllabus",
+    path: "CV-Syllabus.pdf"
+  },
 
-    ml: {
-      name: "Machine Learning Syllabus.pdf",
-      path:
-        "syllabus_files/ML-Syllabus.pdf"
-    },
+  ml: {
+    name: "Machine Learning Syllabus",
+    path: "ML-Syllabus.pdf"
+  },
 
-    os: {
-      name:
-        "Operating Systems Syllabus.pdf",
-      path:
-        "syllabus_files/OS-Syllabus.pdf"
-    },
+  os: {
+    name: "Operating Systems Syllabus",
+    path: "OS-Syllabus.pdf"
+  },
 
-    iwc: {
-      name:
-        "Introduction to Wireless Communication Syllabus.pdf",
-      path:
-        "syllabus_files/IWC-Syllabus.pdf"
-    }
-  };
+  iwc: {
+    name: "Introduction to Wireless Communication Syllabus",
+    path: "IWC-Syllabus.pdf"
+  }
+};
 
+const syllabusSubject = document.getElementById("syllabusSubject");
+const syllabusResult = document.getElementById("syllabusResult");
+const syllabusTitle = document.getElementById("syllabusTitle");
+const syllabusMessage = document.getElementById("syllabusMessage");
+const openSyllabus = document.getElementById("openSyllabus");
+const downloadSyllabus = document.getElementById("downloadSyllabus");
 
-  const syllabusSubject =
-    document.getElementById(
-      "syllabusSubject"
-    );
+function getFileUrl(path) {
+  return path
+    .split("/")
+    .map(function (part) {
+      return encodeURIComponent(part);
+    })
+    .join("/");
+}
 
-  const syllabusResult =
-    document.getElementById(
-      "syllabusResult"
-    );
+function updateSyllabus() {
+  if (!syllabusSubject) return;
 
-  const syllabusTitle =
-    document.getElementById(
-      "syllabusTitle"
-    );
+  const selected = syllabusFiles[syllabusSubject.value];
 
-  const syllabusMessage =
-    document.getElementById(
-      "syllabusMessage"
-    );
-
-  const openSyllabus =
-    document.getElementById(
-      "openSyllabus"
-    );
-
-  const downloadSyllabus =
-    document.getElementById(
-      "downloadSyllabus"
-    );
-
-
-  function updateSyllabus() {
-
-    if (!syllabusSubject) return;
-
-    const selected =
-      syllabusFiles[
-        syllabusSubject.value
-      ];
-
-    if (!selected) {
-
-      if (syllabusResult) {
-        syllabusResult.hidden = true;
-      }
-
-      if (openSyllabus) {
-
-        openSyllabus.hidden = true;
-
-        openSyllabus.removeAttribute(
-          "href"
-        );
-      }
-
-      if (downloadSyllabus) {
-
-        downloadSyllabus.hidden = true;
-
-        downloadSyllabus.removeAttribute(
-          "href"
-        );
-      }
-
-      if (syllabusTitle) {
-        syllabusTitle.textContent = "";
-      }
-
-      if (syllabusMessage) {
-        syllabusMessage.textContent = "";
-      }
-
-      return;
-    }
-
-    const fileUrl =
-      selected.path
-        .split("/")
-        .map(
-          (part) =>
-            encodeURIComponent(part)
-        )
-        .join("/");
-
-    if (syllabusResult) {
-      syllabusResult.hidden = false;
-    }
-
-    if (syllabusTitle) {
-      syllabusTitle.textContent =
-        selected.name;
-    }
-
-    if (syllabusMessage) {
-
-      syllabusMessage.textContent =
-        "Your selected syllabus is ready to open or download.";
-    }
+  if (!selected) {
+    if (syllabusResult) syllabusResult.hidden = true;
 
     if (openSyllabus) {
-
-      openSyllabus.href = fileUrl;
-
-      openSyllabus.target = "_blank";
-
-      openSyllabus.rel =
-        "noopener noreferrer";
-
-      openSyllabus.hidden = false;
+      openSyllabus.hidden = true;
+      openSyllabus.removeAttribute("href");
     }
 
     if (downloadSyllabus) {
-
-      downloadSyllabus.href = fileUrl;
-
-      downloadSyllabus.setAttribute(
-        "download",
-        selected.name
-      );
-
-      downloadSyllabus.hidden = false;
+      downloadSyllabus.hidden = true;
+      downloadSyllabus.removeAttribute("href");
     }
+
+    return;
   }
 
+  const fileUrl = getFileUrl(selected.path);
 
-  if (syllabusSubject) {
-
-    syllabusSubject.addEventListener(
-      "change",
-      updateSyllabus
-    );
-
-    updateSyllabus();
+  if (syllabusResult) {
+    syllabusResult.hidden = false;
   }
 
+  if (syllabusTitle) {
+    syllabusTitle.textContent = selected.name;
+  }
+
+  if (syllabusMessage) {
+    syllabusMessage.textContent =
+      "Your selected syllabus is ready to open or download.";
+  }
+
+  if (openSyllabus) {
+    openSyllabus.href = fileUrl;
+    openSyllabus.target = "_blank";
+    openSyllabus.rel = "noopener noreferrer";
+    openSyllabus.hidden = false;
+  }
+
+  if (downloadSyllabus) {
+    downloadSyllabus.href = fileUrl;
+    downloadSyllabus.setAttribute("download", selected.name);
+    downloadSyllabus.hidden = false;
+  }
+}
+
+if (syllabusSubject) {
+  syllabusSubject.addEventListener("change", updateSyllabus);
+  updateSyllabus();
+}
 
   /* =========================================
      6. TOOL NAVIGATION
@@ -2317,35 +2244,30 @@ document.addEventListener("DOMContentLoaded", function () {
   const studyResources = {
 
     daa: {
-      title:
-        "Design and Analysis of Algorithms",
+  title: "Design and Analysis of Algorithms",
 
-      resources: [
-        {
-          name: "DAA Unit 1 Notes",
-          url:
-            "subject_files/DAA%20UNIT-1.pdf"
-        },
-
-        {
-          name: "DAA Unit 2 Notes",
-          url:
-            "subject_files/DAA%20UNIT-2.pdf"
-        },
-
-        {
-          name: "DAA Unit 3 Notes",
-          url:
-            "subject_files/DAA%20UNIT-3%20notes.pdf"
-        },
-
-        {
-          name: "DAA Unit 4 Notes",
-          url:
-            "subject_files/DAA%20unit-4%20notes.pdf"
-        }
-      ]
+  resources: [
+    {
+      name: "DAA Unit 1 Notes",
+      url: "DAA UNIT-1.pdf"
     },
+
+    {
+      name: "DAA Unit 2 Notes",
+      url: "DAA UNIT-2.pdf"
+    },
+
+    {
+      name: "DAA Unit 3 Notes",
+      url: "DAA UNIT-3 notes.pdf"
+    },
+
+    {
+      name: "DAA Unit 4 Notes",
+      url: "DAA unit-4 notes.pdf"
+    }
+  ]
+},
 
     cv: {
       title: "Computer Vision",
