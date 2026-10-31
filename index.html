@@ -1,16 +1,21 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="UsefulHub offers free calculators, study resources, quizzes, text tools, subject syllabuses, and question banks.">
+
+  <meta name="description"
+    content="UsefulHub offers free calculators, study resources, quizzes, text tools, subject syllabuses, and question banks.">
+
   <title>UsefulHub - Free Tools for Everyone</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-<div class="nature-trees" aria-hidden="true"></div>
+
+  <div class="nature-trees" aria-hidden="true"></div>
 
   <header>
     <h2>🌐 UsefulHub</h2>
@@ -18,396 +23,850 @@
   </header>
 
   <main>
+
     <!-- Hero and Search -->
     <section class="hero">
       <h1>Everything Useful, in One Place.</h1>
       <p>Learn, calculate, and get things done easily.</p>
 
       <label for="search">Search tools</label>
-      <input type="search" id="search" placeholder="Search for a tool..." aria-label="Search tools">
+
+      <input
+        type="search"
+        id="search"
+        placeholder="Search for a tool..."
+        aria-label="Search tools">
     </section>
+
 
     <!-- Explore Tools -->
     <section class="tools">
+
       <h2>Explore Our Tools</h2>
 
       <div class="tool-grid" id="toolGrid">
+
         <article class="tool-card">
           <h3>🧮 Calculator</h3>
           <p>Perform everyday calculations.</p>
-          <button type="button" onclick="openTool('calculator')">Try Now</button>
+          <button type="button" onclick="openTool('calculator')">
+            Try Now
+          </button>
         </article>
+
 
         <article class="tool-card">
           <h3>📚 Study Corner</h3>
           <p>Explore study notes and learning resources.</p>
-          <button type="button" onclick="openTool('study')">Explore</button>
+          <button type="button" onclick="openTool('study')">
+            Explore
+          </button>
         </article>
+
 
         <article class="tool-card">
           <h3>📝 Quiz Practice</h3>
           <p>Test your knowledge with a quick quiz.</p>
-          <button type="button" onclick="openTool('quiz')">Start Quiz</button>
+          <button type="button" onclick="openTool('quiz')">
+            Start Quiz
+          </button>
         </article>
+
 
         <article class="tool-card">
           <h3>✍️ Text Tools</h3>
           <p>Convert text to uppercase or lowercase.</p>
-          <button type="button" onclick="openTool('text')">Try Now</button>
+          <button type="button" onclick="openTool('text')">
+            Try Now
+          </button>
         </article>
+
 
         <article class="tool-card">
           <h3>📋 Syllabus</h3>
           <p>View and download subject syllabus PDFs.</p>
-          <button type="button" onclick="openTool('syllabus')">View Syllabus</button>
+          <button type="button" onclick="openTool('syllabus')">
+            View Syllabus
+          </button>
         </article>
+
 
         <article class="tool-card">
           <h3>📚 Q.B. Question Bank</h3>
           <p>Access your subject-wise question-bank files.</p>
-          <button type="button" onclick="openTool('qb')">Explore Q.B.</button>
+          <button type="button" onclick="openTool('qb')">
+            Explore Q.B.
+          </button>
         </article>
+
       </div>
 
       <p id="message" role="status" aria-live="polite"></p>
+
     </section>
 
+
     <!-- Calculator -->
-    
+    <section id="calculatorTool" class="calculator-tool uh-ml-calculator" hidden>
 
-<section id="calculatorTool" class="calculator-tool uh-ml-calculator" hidden>
-  <div class="uh-calc-header">
-    <div class="uh-calc-mark">∑</div>
-    <div>
-      <p class="uh-calc-kicker">USEFULHUB · STUDENT TOOLKIT</p>
-      <h2>Scientific &amp; ML Calculator</h2>
-      <p class="uh-calc-subtitle">From everyday maths to machine-learning formulas.</p>
-    </div>
-  </div>
+      <div class="uh-calc-header">
 
-  <div class="uh-calc-tabs">
-    <button type="button" class="uh-tab is-active" data-panel="scientificPanel">Scientific</button>
-    <button type="button" class="uh-tab" data-panel="statisticsPanel">Statistics</button>
-    <button type="button" class="uh-tab" data-panel="matrixPanel">Matrices</button>
-    <button type="button" class="uh-tab" data-panel="mlPanel">ML Functions</button>
-  </div>
+        <div class="uh-calc-mark">∑</div>
 
-  <div class="uh-calc-panel is-visible" id="scientificPanel">
-    <div class="uh-angle-row">
-      <span>Angle mode</span>
-      <div class="uh-angle-switch">
-        <button type="button" id="uhDegrees" class="is-selected">DEG</button>
-        <button type="button" id="uhRadians">RAD</button>
+        <div>
+          <p class="uh-calc-kicker">USEFULHUB · STUDENT TOOLKIT</p>
+
+          <h2>Scientific &amp; ML Calculator</h2>
+
+          <p class="uh-calc-subtitle">
+            From everyday maths to machine-learning formulas.
+          </p>
+        </div>
+
       </div>
-    </div>
 
-    <label class="uh-field-label" for="uhExpression">EXPRESSION</label>
-    <input id="uhExpression" class="uh-expression" placeholder="e.g. sin(30) + sqrt(16)">
 
-    <p class="uh-expression-hint">
-      Supports sin, cos, tan, log, ln, sqrt, powers, factorial and constants π/e.
-    </p>
+      <div class="uh-calc-tabs">
 
-    <div class="uh-keypad" id="uhKeypad">
-      <button type="button" data-insert="sin(">sin</button>
-      <button type="button" data-insert="cos(">cos</button>
-      <button type="button" data-insert="tan(">tan</button>
-      <button type="button" data-insert="sqrt(">√</button>
+        <button
+          type="button"
+          class="uh-tab is-active"
+          data-panel="scientificPanel">
+          Scientific
+        </button>
 
-      <button type="button" data-insert="log(">log</button>
-      <button type="button" data-insert="ln(">ln</button>
-      <button type="button" data-insert="^2">x²</button>
-      <button type="button" data-insert="^">xʸ</button>
+        <button
+          type="button"
+          class="uh-tab"
+          data-panel="statisticsPanel">
+          Statistics
+        </button>
 
-      <button type="button" data-insert="(">(</button>
-      <button type="button" data-insert=")">)</button>
-      <button type="button" data-insert="pi">π</button>
-      <button type="button" data-insert="e">e</button>
+        <button
+          type="button"
+          class="uh-tab"
+          data-panel="matrixPanel">
+          Matrices
+        </button>
 
-      <button type="button" data-action="clear">AC</button>
-      <button type="button" data-action="backspace">⌫</button>
-      <button type="button" data-insert="/">÷</button>
-      <button type="button" data-insert="*">×</button>
+        <button
+          type="button"
+          class="uh-tab"
+          data-panel="mlPanel">
+          ML Functions
+        </button>
 
-      <button type="button" data-insert="7">7</button>
-      <button type="button" data-insert="8">8</button>
-      <button type="button" data-insert="9">9</button>
-      <button type="button" data-insert="-">−</button>
+      </div>
 
-      <button type="button" data-insert="4">4</button>
-      <button type="button" data-insert="5">5</button>
-      <button type="button" data-insert="6">6</button>
-      <button type="button" data-insert="+">+</button>
 
-      <button type="button" data-insert="1">1</button>
-      <button type="button" data-insert="2">2</button>
-      <button type="button" data-insert="3">3</button>
-      <button type="button" data-action="calculate" class="uh-key-equals">=</button>
+      <!-- Scientific Calculator -->
+      <div class="uh-calc-panel is-visible" id="scientificPanel">
 
-      <button type="button" data-insert="0">0</button>
-      <button type="button" data-insert=".">.</button>
-      <button type="button" data-insert="%">%</button>
-      <button type="button" data-insert="!">n!</button>
-    </div>
+        <div class="uh-angle-row">
 
-    <div class="uh-result-card" aria-live="polite">
-      <span>RESULT</span>
-      <output id="uhCalcResult">Your answer will appear here.</output>
-      <p id="uhCalcStatus">Ready to calculate.</p>
-    </div>
-  </div>
+          <span>Angle mode</span>
 
-  <div class="uh-calc-panel" id="statisticsPanel" hidden>
-    <p class="uh-panel-intro">Enter comma-separated numbers.</p>
-    <label class="uh-field-label" for="uhDataSet">DATA SET</label>
-    <textarea id="uhDataSet" rows="3" placeholder="2, 4, 4, 4, 5, 5, 7, 9"></textarea>
-    <button type="button" class="uh-main-button" id="uhStatsCalculate">Calculate Statistics</button>
-    <div id="uhStatsResult" class="uh-output-box">Statistics appear here.</div>
-  </div>
+          <div class="uh-angle-switch">
 
-  <div class="uh-calc-panel" id="matrixPanel" hidden>
-    <p class="uh-panel-intro">Enter each matrix row on a new line. Separate values with commas.</p>
-    <div class="uh-matrix-grid">
-      <div>
-        <label class="uh-field-label" for="uhMatrixA">MATRIX A</label>
-        <textarea id="uhMatrixA" rows="3">1, 2
+            <button
+              type="button"
+              id="uhDegrees"
+              class="is-selected">
+              DEG
+            </button>
+
+            <button
+              type="button"
+              id="uhRadians">
+              RAD
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <label class="uh-field-label" for="uhExpression">
+          EXPRESSION
+        </label>
+
+        <input
+          id="uhExpression"
+          class="uh-expression"
+          placeholder="e.g. sin(30) + sqrt(16)">
+
+
+        <p class="uh-expression-hint">
+          Supports sin, cos, tan, log, ln, sqrt, powers, factorial and constants π/e.
+        </p>
+
+
+        <div class="uh-keypad" id="uhKeypad">
+
+          <button type="button" data-insert="sin(">sin</button>
+          <button type="button" data-insert="cos(">cos</button>
+          <button type="button" data-insert="tan(">tan</button>
+          <button type="button" data-insert="sqrt(">√</button>
+
+          <button type="button" data-insert="log(">log</button>
+          <button type="button" data-insert="ln(">ln</button>
+          <button type="button" data-insert="^2">x²</button>
+          <button type="button" data-insert="^">xʸ</button>
+
+          <button type="button" data-insert="(">(</button>
+          <button type="button" data-insert=")">)</button>
+          <button type="button" data-insert="pi">π</button>
+          <button type="button" data-insert="e">e</button>
+
+          <button type="button" data-action="clear">AC</button>
+          <button type="button" data-action="backspace">⌫</button>
+          <button type="button" data-insert="/">÷</button>
+          <button type="button" data-insert="*">×</button>
+
+          <button type="button" data-insert="7">7</button>
+          <button type="button" data-insert="8">8</button>
+          <button type="button" data-insert="9">9</button>
+          <button type="button" data-insert="-">−</button>
+
+          <button type="button" data-insert="4">4</button>
+          <button type="button" data-insert="5">5</button>
+          <button type="button" data-insert="6">6</button>
+          <button type="button" data-insert="+">+</button>
+
+          <button type="button" data-insert="1">1</button>
+          <button type="button" data-insert="2">2</button>
+          <button type="button" data-insert="3">3</button>
+
+          <button
+            type="button"
+            data-action="calculate"
+            class="uh-key-equals">
+            =
+          </button>
+
+          <button type="button" data-insert="0">0</button>
+          <button type="button" data-insert=".">.</button>
+          <button type="button" data-insert="%">%</button>
+          <button type="button" data-insert="!">n!</button>
+
+        </div>
+
+
+        <div class="uh-result-card" aria-live="polite">
+
+          <span>RESULT</span>
+
+          <output id="uhCalcResult">
+            Your answer will appear here.
+          </output>
+
+          <p id="uhCalcStatus">
+            Ready to calculate.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- Statistics -->
+      <div class="uh-calc-panel" id="statisticsPanel" hidden>
+
+        <p class="uh-panel-intro">
+          Enter comma-separated numbers.
+        </p>
+
+        <label class="uh-field-label" for="uhDataSet">
+          DATA SET
+        </label>
+
+        <textarea
+          id="uhDataSet"
+          rows="3"
+          placeholder="2, 4, 4, 4, 5, 5, 7, 9"></textarea>
+
+        <button
+          type="button"
+          class="uh-main-button"
+          id="uhStatsCalculate">
+          Calculate Statistics
+        </button>
+
+        <div id="uhStatsResult" class="uh-output-box">
+          Statistics appear here.
+        </div>
+
+      </div>
+
+
+      <!-- Matrices -->
+      <div class="uh-calc-panel" id="matrixPanel" hidden>
+
+        <p class="uh-panel-intro">
+          Enter each matrix row on a new line. Separate values with commas.
+        </p>
+
+
+        <div class="uh-matrix-grid">
+
+          <div>
+
+            <label class="uh-field-label" for="uhMatrixA">
+              MATRIX A
+            </label>
+
+            <textarea id="uhMatrixA" rows="3">1, 2
 3, 4</textarea>
-      </div>
-      <div>
-        <label class="uh-field-label" for="uhMatrixB">MATRIX B</label>
-        <textarea id="uhMatrixB" rows="3">5, 6
+
+          </div>
+
+
+          <div>
+
+            <label class="uh-field-label" for="uhMatrixB">
+              MATRIX B
+            </label>
+
+            <textarea id="uhMatrixB" rows="3">5, 6
 7, 8</textarea>
+
+          </div>
+
+        </div>
+
+
+        <label class="uh-field-label" for="uhMatrixOperation">
+          OPERATION
+        </label>
+
+        <select id="uhMatrixOperation">
+
+          <option value="add">A + B</option>
+          <option value="subtract">A − B</option>
+          <option value="multiply">A × B</option>
+          <option value="transposeA">Transpose A</option>
+          <option value="determinantA">Determinant of A</option>
+          <option value="inverseA">Inverse of A</option>
+          <option value="dot">Dot product</option>
+
+        </select>
+
+
+        <button
+          type="button"
+          class="uh-main-button"
+          id="uhMatrixCalculate">
+          Calculate Matrix
+        </button>
+
+
+        <div id="uhMatrixResult" class="uh-output-box">
+          Matrix result appears here.
+        </div>
+
       </div>
-    </div>
-    <label class="uh-field-label" for="uhMatrixOperation">OPERATION</label>
-    <select id="uhMatrixOperation">
-      <option value="add">A + B</option>
-      <option value="subtract">A − B</option>
-      <option value="multiply">A × B</option>
-      <option value="transposeA">Transpose A</option>
-      <option value="determinantA">Determinant of A</option>
-      <option value="inverseA">Inverse of A</option>
-      <option value="dot">Dot product</option>
-    </select>
-    <button type="button" class="uh-main-button" id="uhMatrixCalculate">Calculate Matrix</button>
-    <div id="uhMatrixResult" class="uh-output-box">Matrix result appears here.</div>
-  </div>
 
-  <div class="uh-calc-panel" id="mlPanel" hidden>
-    <p class="uh-panel-intro">Calculate common machine-learning functions and loss metrics.</p>
-    <label class="uh-field-label" for="uhMlFunction">ML FUNCTION</label>
-    <select id="uhMlFunction">
-      <option value="sigmoid">Sigmoid</option>
-      <option value="relu">ReLU</option>
-      <option value="leakyRelu">Leaky ReLU</option>
-      <option value="tanh">tanh</option>
-      <option value="softmax">Softmax</option>
-      <option value="mse">Mean Squared Error (MSE)</option>
-      <option value="mae">Mean Absolute Error (MAE)</option>
-      <option value="bce">Binary Cross-Entropy</option>
-      <option value="euclidean">Euclidean Distance</option>
-      <option value="dot">Dot Product</option>
-    </select>
 
-    <label class="uh-field-label" for="uhMlInput">INPUT / PREDICTIONS</label>
-    <input id="uhMlInput" placeholder="e.g. -2 or 1, 2, 3">
+      <!-- ML Functions -->
+      <div class="uh-calc-panel" id="mlPanel" hidden>
 
-    <div id="uhMlPairWrap" hidden>
-      <label class="uh-field-label" for="uhMlTarget">TARGET / SECOND VECTOR</label>
-      <input id="uhMlTarget" placeholder="e.g. 0, 1, 1">
-    </div>
+        <p class="uh-panel-intro">
+          Calculate common machine-learning functions and loss metrics.
+        </p>
 
-    <button type="button" class="uh-main-button" id="uhMlCalculate">Calculate ML Function</button>
-    <div id="uhMlResult" class="uh-output-box">ML result appears here.</div>
-    <p class="uh-small-note">For binary cross-entropy, enter target labels of 0 or 1 and prediction probabilities from 0 to 1.</p>
-  </div>
-</section>
 
+        <label class="uh-field-label" for="uhMlFunction">
+          ML FUNCTION
+        </label>
+
+
+        <select id="uhMlFunction">
+
+          <option value="sigmoid">Sigmoid</option>
+          <option value="relu">ReLU</option>
+          <option value="leakyRelu">Leaky ReLU</option>
+          <option value="tanh">tanh</option>
+          <option value="softmax">Softmax</option>
+          <option value="mse">Mean Squared Error (MSE)</option>
+          <option value="mae">Mean Absolute Error (MAE)</option>
+          <option value="bce">Binary Cross-Entropy</option>
+          <option value="euclidean">Euclidean Distance</option>
+          <option value="dot">Dot Product</option>
+
+        </select>
+
+
+        <label class="uh-field-label" for="uhMlInput">
+          INPUT / PREDICTIONS
+        </label>
+
+        <input
+          id="uhMlInput"
+          placeholder="e.g. -2 or 1, 2, 3">
+
+
+        <div id="uhMlPairWrap" hidden>
+
+          <label class="uh-field-label" for="uhMlTarget">
+            TARGET / SECOND VECTOR
+          </label>
+
+          <input
+            id="uhMlTarget"
+            placeholder="e.g. 0, 1, 1">
+
+        </div>
+
+
+        <button
+          type="button"
+          class="uh-main-button"
+          id="uhMlCalculate">
+          Calculate ML Function
+        </button>
+
+
+        <div id="uhMlResult" class="uh-output-box">
+          ML result appears here.
+        </div>
+
+
+        <p class="uh-small-note">
+          For binary cross-entropy, enter target labels of 0 or 1 and prediction probabilities from 0 to 1.
+        </p>
+
+      </div>
+
+    </section>
 
 
     <!-- Study Corner -->
     <section id="studyTool" class="study-tool" hidden>
+
       <h2>📚 Study Corner</h2>
-      <p>Select a subject to explore study notes and learning resources.</p>
+
+      <p>
+        Select a subject to explore study notes and learning resources.
+      </p>
+
 
       <div class="subject-grid">
-        <button type="button" class="subject-card" onclick="showSubject('daa')" aria-controls="subjectResources">
+
+        <button
+          type="button"
+          class="subject-card"
+          onclick="showSubject('daa')"
+          aria-controls="subjectResources">
+
           <span class="subject-icon">📘</span>
           <span class="subject-name">DAA</span>
-          <span class="subject-description">Design and Analysis of Algorithms</span>
+          <span class="subject-description">
+            Design and Analysis of Algorithms
+          </span>
+
         </button>
 
-        <button type="button" class="subject-card" onclick="showSubject('cv')" aria-controls="subjectResources">
+
+        <button
+          type="button"
+          class="subject-card"
+          onclick="showSubject('cv')"
+          aria-controls="subjectResources">
+
           <span class="subject-icon">👁️</span>
           <span class="subject-name">Computer Vision</span>
-          <span class="subject-description">Image processing and vision</span>
+          <span class="subject-description">
+            Image processing and vision
+          </span>
+
         </button>
 
-        <button type="button" class="subject-card" onclick="showSubject('ml')" aria-controls="subjectResources">
+
+        <button
+          type="button"
+          class="subject-card"
+          onclick="showSubject('ml')"
+          aria-controls="subjectResources">
+
           <span class="subject-icon">🤖</span>
           <span class="subject-name">Machine Learning</span>
-          <span class="subject-description">Models and algorithms</span>
+          <span class="subject-description">
+            Models and algorithms
+          </span>
+
         </button>
 
-        <button type="button" class="subject-card" onclick="showSubject('os')" aria-controls="subjectResources">
+
+        <button
+          type="button"
+          class="subject-card"
+          onclick="showSubject('os')"
+          aria-controls="subjectResources">
+
           <span class="subject-icon">💻</span>
           <span class="subject-name">Operating Systems</span>
-          <span class="subject-description">Processes and memory</span>
+          <span class="subject-description">
+            Processes and memory
+          </span>
+
         </button>
 
-        <button type="button" class="subject-card" onclick="showSubject('iwc')" aria-controls="subjectResources">
+
+        <button
+          type="button"
+          class="subject-card"
+          onclick="showSubject('iwc')"
+          aria-controls="subjectResources">
+
           <span class="subject-icon">📡</span>
-          <span class="subject-name">Introduction to Wireless Communication</span>
-          <span class="subject-description">Wireless communication concepts</span>
+          <span class="subject-name">
+            Introduction to Wireless Communication
+          </span>
+          <span class="subject-description">
+            Wireless communication concepts
+          </span>
+
         </button>
+
       </div>
 
-      <div id="subjectResources" class="subject-resources" aria-live="polite" hidden>
-        <h3 id="resourcesTitle">Study Materials</h3>
+
+      <div
+        id="subjectResources"
+        class="subject-resources"
+        aria-live="polite"
+        hidden>
+
+        <h3 id="resourcesTitle">
+          Study Materials
+        </h3>
+
         <ul id="resourcesList"></ul>
+
       </div>
+
     </section>
+
 
     <!-- Syllabus -->
     <section id="syllabusTool" class="calculator-tool" hidden>
-      <h2>📋 Subject Syllabus</h2>
-      <p>Select your subject to view or download its syllabus.</p>
 
-      <label for="syllabusSubject">Choose a subject:</label>
+      <h2>📋 Subject Syllabus</h2>
+
+      <p>
+        Select your subject to view or download its syllabus.
+      </p>
+
+
+      <label for="syllabusSubject">
+        Choose a subject:
+      </label>
+
+
       <select id="syllabusSubject">
-        <option value="">-- Select Subject --</option>
-        <option value="daa">Design and Analysis of Algorithms (DAA)</option>
-        <option value="all">All Subjects
+
+        <option value="">
+          -- Select Subject --
         </option>
-        <option value="cv">Computer Vision (CV)</option>
-        <option value="ml">Machine Learning (ML)</option>
-        <option value="os">Operating Systems (OS)</option>
-        <option value="iwc">Introduction to Wireless Communication (IWC)</option>
+
+        <option value="daa">
+          Design and Analysis of Algorithms (DAA)
+        </option>
+
+        <option value="all">
+          All Subjects
+        </option>
+
+        <option value="cv">
+          Computer Vision (CV)
+        </option>
+
+        <option value="ml">
+          Machine Learning (ML)
+        </option>
+
+        <option value="os">
+          Operating Systems (OS)
+        </option>
+
+        <option value="iwc">
+          Introduction to Wireless Communication (IWC)
+        </option>
+
       </select>
 
-      <div id="syllabusResult" class="subject-resources" aria-live="polite" hidden>
-        <h3 id="syllabusTitle">Syllabus</h3>
+
+      <div
+        id="syllabusResult"
+        class="subject-resources"
+        aria-live="polite"
+        hidden>
+
+        <h3 id="syllabusTitle">
+          Syllabus
+        </h3>
+
         <p id="syllabusMessage"></p>
 
+
         <div class="resource-actions">
-          <a id="openSyllabus" href="#" target="_blank" rel="noopener noreferrer" hidden>📖 Open PDF</a>
-          <a id="downloadSyllabus" href="#" download hidden>⬇ Download PDF</a>
+
+          <a
+            id="openSyllabus"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            hidden>
+            📖 Open PDF
+          </a>
+
+
+          <a
+            id="downloadSyllabus"
+            href="#"
+            download
+            hidden>
+            ⬇ Download PDF
+          </a>
+
         </div>
+
       </div>
+
     </section>
+
 
     <!-- Quiz Practice -->
     <section id="quizTool" class="calculator-tool" hidden>
-      <h2>📝 Subject Quiz Practice</h2>
-      <p>Choose a subject and test your knowledge!</p>
 
-      <label for="quizSubject">Select a subject:</label>
+      <h2>📝 Subject Quiz Practice</h2>
+
+      <p>
+        Choose a subject and test your knowledge!
+      </p>
+
+
+      <label for="quizSubject">
+        Select a subject:
+      </label>
+
+
       <select id="quizSubject">
+
         <option value="daa">DAA</option>
         <option value="cv">Computer Vision</option>
         <option value="ml">Machine Learning</option>
         <option value="os">Operating Systems</option>
-        <option value="iwc">Introduction to Wireless Communication</option>
+        <option value="iwc">
+          Introduction to Wireless Communication
+        </option>
+
       </select>
 
-      <button type="button" id="startQuizBtn">Start Quiz</button>
+
+      <button type="button" id="startQuizBtn">
+        Start Quiz
+      </button>
+
 
       <div id="quizArea" hidden>
+
         <h3 id="quizQuestion"></h3>
+
         <div id="quizAnswers"></div>
-        <button type="button" id="checkQuizBtn">Check Answer</button>
-        <button type="button" id="nextQuizBtn">Next Question</button>
-        <p id="quizResult" aria-live="polite">Choose an answer.</p>
-        <p id="quizScore" aria-live="polite">Score: 0</p>
+
+        <button type="button" id="checkQuizBtn">
+          Check Answer
+        </button>
+
+        <button type="button" id="nextQuizBtn">
+          Next Question
+        </button>
+
+        <p id="quizResult" aria-live="polite">
+          Choose an answer.
+        </p>
+
+        <p id="quizScore" aria-live="polite">
+          Score: 0
+        </p>
+
       </div>
+
     </section>
+
 
     <!-- Text Tools -->
     <section id="textTool" class="calculator-tool" hidden>
+
       <h2>✍️ Text Tools</h2>
 
-      <label for="textInput">Enter your text</label>
-      <textarea id="textInput" rows="4" placeholder="Type something..."></textarea>
+
+      <label for="textInput">
+        Enter your text
+      </label>
+
+
+      <textarea
+        id="textInput"
+        rows="4"
+        placeholder="Type something..."></textarea>
+
 
       <div class="text-actions">
-        <button type="button" id="upperBtn">UPPERCASE</button>
-        <button type="button" id="lowerBtn">lowercase</button>
-        <button type="button" id="textClearBtn">Clear</button>
+
+        <button type="button" id="upperBtn">
+          UPPERCASE
+        </button>
+
+        <button type="button" id="lowerBtn">
+          lowercase
+        </button>
+
+        <button type="button" id="textClearBtn">
+          Clear
+        </button>
+
       </div>
 
+
       <p id="textResult" aria-live="polite"></p>
+
     </section>
+
 
     <!-- Q.B. Question Bank -->
     <section id="qbTool" class="calculator-tool" hidden>
-      <h2>📚 Q.B. Question Bank</h2>
-      <p>Choose a subject to find and open your question-bank files.</p>
 
-      <label for="qbSubject">Choose a subject:</label>
+      <h2>📚 Q.B. Question Bank</h2>
+
+      <p>
+        Choose a subject to find and open your question-bank files.
+      </p>
+
+
+      <label for="qbSubject">
+        Choose a subject:
+      </label>
+
+
       <select id="qbSubject">
+
         <option value="all">All Subjects</option>
-        <option value="daa">Design and Analysis of Algorithms (DAA)</option>
-        <option value="cv">Computer Vision (CV)</option>
-        <option value="ml">Machine Learning (ML)</option>
-        <option value="os">Operating Systems (OS)</option>
-        <option value="iwc">MDM / Wireless Communication</option>
+
+        <option value="daa">
+          Design and Analysis of Algorithms (DAA)
+        </option>
+
+        <option value="cv">
+          Computer Vision (CV)
+        </option>
+
+        <option value="ml">
+          Machine Learning (ML)
+        </option>
+
+        <option value="os">
+          Operating Systems (OS)
+        </option>
+
+        <option value="iwc">
+          MDM / Wireless Communication
+        </option>
+
       </select>
 
-      <label for="qbSearch">Search files:</label>
-      <input type="search" id="qbSearch" placeholder="Search by filename or subject...">
 
-      <p id="qbCount" aria-live="polite">Question-bank files will appear here.</p>
+      <label for="qbSearch">
+        Search files:
+      </label>
+
+
+      <input
+        type="search"
+        id="qbSearch"
+        placeholder="Search by filename or subject...">
+
+
+      <p id="qbCount" aria-live="polite">
+        Question-bank files will appear here.
+      </p>
+
 
       <div id="qbQuestions" class="qb-questions"></div>
 
+
       <!-- Previous Paper / Subject File Selector -->
       <div id="qbPapers" class="subject-resources">
-        <h3>📂 Subject Question Bank Files</h3>
-        <p>Select a subject to view its available files.</p>
 
-        <label for="qbPaperSubject">Choose subject:</label>
+        <h3>📂 Subject Question Bank Files</h3>
+
+        <p>
+          Select a subject to view its available files.
+        </p>
+
+
+        <label for="qbPaperSubject">
+          Choose subject:
+        </label>
+
+
         <select id="qbPaperSubject">
+
           <option value="daa">DAA</option>
           <option value="cv">Computer Vision</option>
           <option value="ml">Machine Learning</option>
           <option value="os">Operating Systems</option>
-          <option value="iwc">MDM / Wireless Communication</option>
+          <option value="iwc">
+            MDM / Wireless Communication
+          </option>
+
         </select>
 
-        <!-- IMPORTANT: This ID must appear only once -->
-        <div id="qbPaperList"></div>
+
+        <!-- PDF Buttons -->
+        <div id="qbPaperList">
+
+          <button type="button" onclick="openPDF('allSubjects')">
+            📚 All Subjects
+          </button>
+
+          <button type="button" onclick="openPDF('daaSyllabus')">
+            📋 DAA Syllabus
+          </button>
+
+          <button type="button" onclick="openPDF('daaUnit1')">
+            📖 DAA Unit 1
+          </button>
+
+          <button type="button" onclick="openPDF('daaUnit2')">
+            📖 DAA Unit 2
+          </button>
+
+          <button type="button" onclick="openPDF('daaUnit3')">
+            📖 DAA Unit 3 Notes
+          </button>
+
+          <button type="button" onclick="openPDF('daaUnit4')">
+            📖 DAA Unit 4 Notes
+          </button>
+
+        </div>
+
       </div>
+
     </section>
+
   </main>
+
 
   <footer>
     <p>© 2026 UsefulHub | Made for Everyone</p>
   </footer>
 
+
+  <!-- JavaScript -->
   <script src="script.js" defer></script>
+
 </body>
 </html>
-
-<button onclick="openPDF('allSubjects')">
-    All Subjects
-</button>
-
-<button onclick="openPDF('daaSyllabus')">
-    DAA Syllabus
-</button>
-
-<button onclick="openPDF('daaUnit1')">
-    DAA Unit 1
-</button>
-
-<button onclick="openPDF('daaUnit2')">
-    DAA Unit 2
-</button>
-
-<button onclick="openPDF('daaUnit3')">
-    DAA Unit 3
-</button>
-
-<button onclick="openPDF('daaUnit4')">
-    DAA Unit 4
-</button>
